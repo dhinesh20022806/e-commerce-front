@@ -52,7 +52,10 @@ export default async function handler(req, res) {
             streetAddress,
             country,
             paid: false,
+            created_at: new Date(),
         });
+
+        console.log(orderDoc);
 
         const session = await stripe.checkout.sessions.create({
             line_items,

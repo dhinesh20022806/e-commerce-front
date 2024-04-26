@@ -67,11 +67,11 @@ export default function Featured({ product }) {
                 <ColumnsWrapper>
                     <Column>
                         <div>
-                            <Title>{product.title}</Title>
-                            <Desc>{product.description}</Desc>
+                            <Title>{product?.title}</Title>
+                            <Desc>{product?.description}</Desc>
                             <ButtonsWrapper>
                                 <ButtonLink
-                                    href={"/product/" + product._id}
+                                    href={"/product/" + product?._id}
                                     outline={1}
                                     white={1}
                                 >
