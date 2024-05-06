@@ -192,7 +192,11 @@ export default function CartPage() {
                     </tr>
                   ))}
                   <tr>
-                    <td></td>
+                    <td>
+                      <Button onClick={() => clearCart()} primary outline>
+                        clear cart
+                      </Button>
+                    </td>
                     <td></td>
                     <td>&#8377;{total}</td>
                   </tr>

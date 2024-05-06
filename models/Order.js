@@ -9,6 +9,8 @@ const OrderSchema = new Schema({
     country: String,
     paid: Boolean,
     created_at: { type: Date, required: true, default: Date.now },
+},{
+    timestamps: true,
 });
 
 export const Order = models?.Order || model("Order", OrderSchema);

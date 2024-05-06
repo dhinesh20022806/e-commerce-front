@@ -4,6 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const account = () => {
     const { data: session } = useSession();
+    console.log(session);
     if (session) {
         return (
             <>
@@ -17,7 +18,9 @@ const account = () => {
             <div></div>
             <div>
                 <h1>Login</h1>
-                <button onClick={signIn}>Login with google</button>
+                <button onClick={async () => await signIn("google")}>
+                    Login with google
+                </button>
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { CartContext } from "@/components/CartContext";
 
 const Bg = styled.div`
-    background-color: #222;
+    background-color: #644930;
     color: #fff;
     padding: 50px 0;
 `;
@@ -72,8 +72,8 @@ export default function Featured({ product }) {
                             <ButtonsWrapper>
                                 <ButtonLink
                                     href={"/product/" + product?._id}
-                                    outline={1}
-                                    white={1}
+                                    outline
+                                    white
                                 >
                                     Read more
                                 </ButtonLink>
@@ -85,10 +85,7 @@ export default function Featured({ product }) {
                         </div>
                     </Column>
                     <Column>
-                        <img
-                            src="https://dawid-next-ecommerce.s3.amazonaws.com/1679151719649.png"
-                            alt=""
-                        />
+                        <img src={product?.images[0]} alt={product.name} />
                     </Column>
                 </ColumnsWrapper>
             </Center>

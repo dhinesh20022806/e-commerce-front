@@ -56,8 +56,14 @@ const Price = styled.div`
   }
 `;
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export default function ProductBox({ _id, title, description, price, images }) {
-  const { addProduct } = useContext(CartContext);
+  const { addProduct, buyNow } = useContext(CartContext);
   const url = "/product/" + _id;
   return (
     <ProductWrapper>
@@ -70,9 +76,14 @@ export default function ProductBox({ _id, title, description, price, images }) {
         <Title href={url}>{title}</Title>
         <PriceRow>
           <Price> &#8377;{price}</Price>
-          <Button block onClick={() => addProduct(_id)} primary outline>
-            Add to cart
-          </Button>
+          <ButtonsWrapper>
+            <Button block onClick={() => addProduct(_id)} primary outline>
+              Add to cart
+            </Button>
+            <Button black outline onClick={() => buyNow(_id)} primary outline>
+              Buy Now
+            </Button>
+          </ButtonsWrapper>
         </PriceRow>
       </ProductInfoBox>
     </ProductWrapper>

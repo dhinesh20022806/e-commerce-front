@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const CartContext = createContext({});
 
 export function CartContextProvider({ children }) {
+  const router = useRouter();
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProducts, setCartProducts] = useState([]);
   useEffect(() => {
@@ -16,8 +18,14 @@ export function CartContextProvider({ children }) {
     }
   }, []);
   function addProduct(productId) {
+    alert("Product added");
     setCartProducts((prev) => [...prev, productId]);
   }
+  function buyNow(productId) {
+    setCartProducts((prev) => [productId]);
+    router.push("/cart");
+  }
+
   function removeProduct(productId) {
     setCartProducts((prev) => {
       const pos = prev.indexOf(productId);
@@ -41,6 +49,7 @@ export function CartContextProvider({ children }) {
         addProduct,
         removeProduct,
         clearCart,
+        buyNow,
       }}
     >
       {children}
