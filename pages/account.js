@@ -1,29 +1,30 @@
-import React from "react";
-
-import { useSession, signIn, signOut } from "next-auth/react";
+import Account from "@/components/Account";
+import Header from "@/components/Header";
+import LoginForm from "@/components/LoginForm";
+import SignupForm from "@/components/SignupForm";
+import { CartContext } from "@/components/CartContext";
+import { useContext } from "react";
 
 const account = () => {
-    const { data: session } = useSession();
-    console.log(session);
-    if (session) {
-        return (
-            <>
-                Signed in as {session.user.email} <br />
-                <button onClick={() => signOut()}>Sign out</button>
-            </>
-        );
+    const {state,handleLogin, handleLogout, handleSignup , loginInfo} = useContext(CartContext)
+    
+
+    
+
+    if(state.state === null && state.data !== null){
+        return (<>
+            <Header></Header>
+            <Account email={state.data} handleLogout={handleLogout} />
+
+        </>)
     }
-    return (
-        <div>
-            <div></div>
-            <div>
-                <h1>Login</h1>
-                <button onClick={async () => await signIn("google")}>
-                    Login with google
-                </button>
-            </div>
-        </div>
-    );
+
+
+       
+    return (<>
+       <Header />
+      {state.state? <LoginForm handleSignup={handleSignup} loginInfo={loginInfo} /> : <SignupForm handleLogin={handleLogin} />}
+    </>);
 };
 
 export default account;

@@ -8,7 +8,6 @@ const OrderSchema = new Schema({
     postalCode: String,
     country: String,
     paid: Boolean,
-    created_at: { type: Date, required: true, default: Date.now },
 },{
     timestamps: true,
 });

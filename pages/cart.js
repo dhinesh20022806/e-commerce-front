@@ -77,6 +77,7 @@ export default function CartPage() {
   const [streetAddress, setStreetAddress] = useState("");
   const [country, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     if (cartProducts.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
@@ -217,7 +218,7 @@ export default function CartPage() {
               <Input
                 type="text"
                 placeholder="Email"
-                value={email}
+                value={email }
                 name="email"
                 onChange={(ev) => setEmail(ev.target.value)}
               />
